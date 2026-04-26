@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Journal | ActivePaws</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="css/components2.css">
+    <style>
+        .blog-header { text-align: center; padding: 6rem 0 3rem 0; }
+        .blog-header h1 { font-size: 4rem; margin-bottom: 1rem; }
+        
+        .blog-filters { display: flex; justify-content: center; gap: 1rem; margin-bottom: 4rem; flex-wrap: wrap; }
+        .filter-pill { padding: 0.5rem 1.5rem; border-radius: var(--radius-full); border: 1px solid var(--clr-border); cursor: pointer; font-weight: 600; transition: all 0.3s; }
+        .filter-pill.active, .filter-pill:hover { background: var(--clr-dark); color: #fff; border-color: var(--clr-dark); }
+        
+        /* Featured Post */
+        .featured-post { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; margin-bottom: 6rem; background: var(--clr-bg-alt); padding: 3rem; border-radius: var(--radius-lg); }
+        .fp-img img { width: 100%; height: 500px; object-fit: cover; border-radius: var(--radius-md); box-shadow: var(--shadow-md); }
+        .fp-content span { color: var(--clr-accent-sport); font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; display: block; margin-bottom: 1rem; }
+        .fp-content h2 { font-size: 3rem; line-height: 1.2; margin-bottom: 1.5rem; }
+        .fp-content p { font-size: 1.1rem; color: var(--clr-text-light); margin-bottom: 2rem; line-height: 1.8; }
+        .author-box { display: flex; align-items: center; gap: 1rem; margin-top: 2rem; border-top: 1px solid var(--clr-border); padding-top: 2rem; }
+        .author-box img { width: 50px; height: 50px; border-radius: 50%; }
+
+        /* Blog Grid */
+        .article-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-bottom: 6rem; }
+        .article-card { transition: transform 0.3s; }
+        .article-card:hover { transform: translateY(-10px); }
+        .article-card img { width: 100%; height: 250px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: 1.5rem; }
+        .ac-meta { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.75rem; color: var(--clr-accent-pet); }
+        .article-card h3 { font-size: 1.5rem; line-height: 1.3; margin-bottom: 1rem; }
+        .article-card p { color: var(--clr-text-light); line-height: 1.6; margin-bottom: 1rem; }
+        .read-more { font-weight: 700; color: var(--clr-dark); display: inline-flex; align-items: center; gap: 0.5rem; }
+        .read-more:hover { color: var(--clr-accent-sport); }
+
+        @media (max-width: 992px) {
+            .featured-post { grid-template-columns: 1fr; padding: 2rem; gap: 2rem; }
+            .fp-img img { height: 300px; }
+            .article-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .article-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- شاشة التحميل (Preloader) -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <h1 class="logo">Active<span>Paws</span></h1>
+            <div class="loader-line"></div>
+        </div>
+    </div>
+    <header class="site-header" id="header">
+        <div class="container header-container">
+            <button class="mobile-toggle" aria-label="Toggle Menu"><i class="fa-solid fa-bars"></i></button>
+            <a href="index2.html" class="logo">Active<span>Paws</span></a>
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="index2.html">Home</a></li>
+                    <li><a href="products2.html">Shop All</a></li>
+                    <li><a href="blog2.html" class="active">The Journal</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions"><button class="action-btn cart-btn" id="open-cart"><i class="fa-solid fa-cart-shopping"></i></button></div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="blog-header" data-gsap="fade-up">
+            <h1>The Journal</h1>
+            <p style="font-size:1.2rem; color:var(--clr-text-light);">Insights, tips, and stories for the modern athlete and pet lover.</p>
+        </div>
+
+        <div class="blog-filters" data-gsap="fade-up" data-delay="0.1">
+            <div class="filter-pill active">All Articles</div>
+            <div class="filter-pill">Fitness Training</div>
+            <div class="filter-pill">Pet Health</div>
+            <div class="filter-pill">Gear Reviews</div>
+            <div class="filter-pill">Nutrition</div>
+        </div>
+
+        <!-- Featured Post -->
+        <article class="featured-post" data-gsap="fade-up">
+            <div class="fp-img"><img src="https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?auto=format&fit=crop&w=1000&q=80" alt="Featured"></div>
+            <div class="fp-content">
+                <span>Training / Pet Care</span>
+                <a href="#"><h2>How to Train Your Dog to be Your Perfect Running Partner</h2></a>
+                <p>Running with your dog isn't just about tying a leash. It requires pacing, proper gear, and an understanding of canine endurance. Discover our comprehensive 4-week guide to safe and effective trail running with your best friend.</p>
+                <a href="#" class="btn btn-dark">Read Full Article</a>
+                <div class="author-box">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="Author">
+                    <div>
+                        <strong style="display:block;">Dr. Emily Watson</strong>
+                        <span style="color:var(--clr-text-light); font-size:0.85rem; margin:0; text-transform:none;">Veterinarian & Marathoner • 5 min read</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Grid -->
+        <div class="article-grid">
+            <article class="article-card" data-gsap="fade-up">
+                <a href="#"><img src="https://images.unsplash.com/photo-1533561052604-c3beb212d22d?auto=format&fit=crop&w=600&q=80" alt="Blog"></a>
+                <div class="ac-meta"><span style="color:var(--clr-accent-sport);">Fitness</span><span>Oct 12, 2026</span></div>
+                <a href="#"><h3>10 Core Exercises for Explosive Gym Output</h3></a>
+                <p>Build the foundational strength necessary for heavy lifting and agility movements without equipment.</p>
+                <a href="#" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+            <article class="article-card" data-gsap="fade-up" data-delay="0.1">
+                <a href="#"><img src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=600&q=80" alt="Blog"></a>
+                <div class="ac-meta"><span>Gear Review</span><span>Oct 05, 2026</span></div>
+                <a href="#"><h3>Compression Wear: Science vs. Hype</h3></a>
+                <p>Does compression wear actually improve recovery times? We break down the clinical studies and real-world results.</p>
+                <a href="#" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+            <article class="article-card" data-gsap="fade-up" data-delay="0.2">
+                <a href="#"><img src="https://images.unsplash.com/photo-1513245543132-31f507417b26?auto=format&fit=crop&w=600&q=80" alt="Blog"></a>
+                <div class="ac-meta"><span>Nutrition</span><span>Sep 28, 2026</span></div>
+                <a href="#"><h3>The Best High-Protein Snacks Built For Travel</h3></a>
+                <p>Maintain your macros on the go with these easily packable, non-perishable snack hacks.</p>
+                <a href="#" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+        </div>
+
+        <div style="text-align:center; margin-bottom:6rem;"><button class="btn btn-outline" style="padding:1rem 3rem;">Load More Articles</button></div>
+        <!-- مؤشرات الثقة (US Trust Signals) -->
+        <section class="trust-signals" style="background:#fff; border-top:1px solid var(--clr-border);">
+            <div class="container trust-container">
+                <div class="trust-item" data-gsap="fade-up" data-delay="0.1">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <h4>Free US Delivery</h4>
+                    <p>On all orders over $50</p>
+                </div>
+                <div class="trust-item" data-gsap="fade-up" data-delay="0.2">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    <h4>30-Day Returns</h4>
+                    <p>Hassle-free return policy</p>
+                </div>
+                <div class="trust-item" data-gsap="fade-up" data-delay="0.3">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h4>Secure Checkout</h4>
+                    <p>100% protected payments</p>
+                </div>
+                <div class="trust-item" data-gsap="fade-up" data-delay="0.4">
+                    <i class="fa-solid fa-headset"></i>
+                    <h4>24/7 Support</h4>
+                    <p>Dedicated American team</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container" style="text-align:center;">
+            <p>&copy; 2026 ActivePaws & Co. USA.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/cart2.js"></script>
+    <script src="js/animations2.js"></script>
+    <script src="js/main2.js"></script>
+</body>
+</html>

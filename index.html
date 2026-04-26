@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ActivePaws | Premium US Sportswear & Pet Essentials</title>
+    <meta name="description"
+        content="Shop the boldest sportswear and unique, high-quality pet products. Fast shipping within the USA.">
+    <!-- Google Fonts: Outfit for Heading, Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Inter:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+
+<body>
+    <!-- شاشة التحميل (Preloader) -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <h1 class="logo">Active<span>Paws</span></h1>
+            <div class="loader-line"></div>
+        </div>
+    </div>
+    <!-- شريط الإعلانات العلوي: يوضح العروض والشحن المجاني (Top Announcement Bar) -->
+    <div class="announcement-bar">
+        <p>⚡ FREE 2-Day Shipping on all US orders over $50! <a href="#">Shop Now</a></p>
+    </div>
+
+    <!-- شريط التنقل الرئيسي (Navigation Header) -->
+    <header class="site-header" id="header">
+        <div class="container header-container">
+            <!-- شريط التمرير المستمر (Marquee) لإبراز مميزات التسوق -->
+            <button class="mobile-toggle" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                Active<span>Paws</span>
+            </a>
+
+            <!-- قسم الأقسام الدائرية (Circular Categories) لتسهيل التنقل البصري -->
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="products.html?category=sports">Explore Sports</a></li>
+                    <li><a href="products.html?category=pets">Pet Essentials</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </nav>
+
+            <!-- Action Icons -->
+            <div class="header-actions">
+                <button class="action-btn search-btn" aria-label="Search">
+                    <i class="fa-solid fa-search"></i>
+                </button>
+                <a href="#" class="action-btn wishlist-btn" aria-label="Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="badge" id="wishlist-badge">0</span>
+                </a>
+                <button class="action-btn cart-btn" id="open-cart" aria-label="Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="badge" id="cart-badge">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي للموقع (Main Content) -->
+    <main>
+        <!-- البانر الرئيسي المتحرك (Hero Carousel): العرض التسويقي الأول -->
+        <section class="hero-section">
+            <div class="hero-bg">
+                <!-- Abstract blobs or shapes can go here later -->
+                <div class="blob blob-1"></div>
+                <div class="blob blob-2"></div>
+            </div>
+            <div class="container hero-container">
+                <div class="hero-content" data-gsap="fade-up">
+                    <span class="pill-badge">USA's Finest Quality</span>
+                    <h1 class="hero-title">Fuel Your <span class="text-accent-sport">Performance.</span><br>Reward Your
+                        <span class="text-accent-pet">Best Friend.</span></h1>
+                    <p class="hero-subtitle">Discover premium aesthetic sportswear and unique pet products designed for
+                        the modern active lifestyle.</p>
+                    <div class="hero-cta">
+                        <a href="products.html?category=sports" class="btn btn-primary btn-sport">Shop Sportswear <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                        <a href="products.html?category=pets" class="btn btn-secondary btn-pet">Shop Pet Care <i
+                                class="fa-solid fa-paw"></i></a>
+                    </div>
+                </div>
+                <div class="hero-visual" data-gsap="fade-left">
+                    <!-- Placeholder for Hero visual. Will use a dynamic grid layout representing both categories -->
+                    <div class="hero-grid">
+                        <div class="hero-grid-item sport-item">
+                            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=500&q=80"
+                                alt="Sportswear">
+                            <div class="item-overlay">Performance</div>
+                        </div>
+                        <div class="hero-grid-item pet-item">
+                            <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=500&q=80"
+                                alt="Pet Products">
+                            <div class="item-overlay">Loyalty</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- شريط التمرير الترويجي (Moving Marquee) -->
+        <div class="marquee-wrapper">
+            <div class="marquee-content">
+                <span>🔥 HOT DROP: NEW SPORT COLLECTION</span>
+                <span>•</span>
+                <span>🐾 BEST SELLING PET TOYS BACK IN STOCK</span>
+                <span>•</span>
+                <span>⚡ FAST 2-DAY USA SHIPPING</span>
+                <span>•</span>
+                <span>🔥 HOT DROP: NEW SPORT COLLECTION</span>
+                <span>•</span>
+                <span>🐾 BEST SELLING PET TOYS BACK IN STOCK</span>
+                <span>•</span>
+                <span>⚡ FAST 2-DAY USA SHIPPING</span>
+            </div>
+        </div>
+
+        <!-- قسم شركاء وتوثيقات ودفع آمن (Trust & Payments Showcase) -->
+        <section class="brands-showcase" style="padding: 2.5rem 0; background: #fff; border-bottom: 1px solid var(--clr-border);">
+            <div class="container text-center">
+                <p style="text-transform:uppercase; text-align: center; font-size: 0.85rem; font-weight:600; letter-spacing:2px; color: var(--clr-text-light); margin-bottom: 1.5rem;">Shop With Confidence - 100% Secure Checkout</p>
+                <div class="brands-flex" data-gsap="fade-up">
+                    <!-- <i class="fa-brands fa-cc-visa fa-3x" title="Visa"></i>
+                    <i class="fa-brands fa-cc-mastercard fa-3x" title="Mastercard"></i>
+                    <i class="fa-brands fa-stripe fa-3x" title="Stripe"></i>
+                    <i class="fa-brands fa-paypal fa-3x" title="PayPal"></i>
+                    <i class="fa-brands fa-apple-pay fa-3x" title="Apple Pay"></i> -->
+                </div>
+            </div>
+        </section>
+
+        <!--  -->
+        <!-- قسم بانر العروض الحصرية (Flash Sale) مع مؤقت عد تنازلي -->
+        <section class="flash-sale section-pad" style="background: var(--clr-dark); color: #fff;">
+            <div class="container">
+                <div class="flash-grid">
+                    <div class="flash-content" data-gsap="fade-right">
+                        <div class="pulse-badge">DEAL OF THE WEEK</div>
+                        <h2 style="color:#fff; font-size:3rem; margin-top:1rem;">Pro Performance Pack</h2>
+                        <p style="color:rgba(255,255,255,0.7); font-size:1.1rem; margin-bottom:2rem;">Get the ultimate
+                            athlete bundle. Save 40% when you buy the full set today. Limited stock available
+                            specifically for the US market.</p>
+
+                        <!-- Countdown Timer -->
+                        <div class="countdown" id="countdown">
+                            <div class="cd-box"><span id="cd-days">02</span><small>Days</small></div>
+                            <div class="cd-box"><span id="cd-hours">14</span><small>Hours</small></div>
+                            <div class="cd-box"><span id="cd-mins">35</span><small>Mins</small></div>
+                            <div class="cd-box"><span id="cd-secs">08</span><small>Secs</small></div>
+                        </div>
+
+                        <a href="product-details.html" class="btn btn-sport" style="margin-top:2rem;">Claim Offer Now <i
+                                class="fa-solid fa-bolt"></i></a>
+                    </div>
+                    <div class="flash-visual" data-gsap="fade-left">
+                        <img src="./51CffnX7NbL._AC_SY1000_.jpg"
+                            alt="Sale" style="border-radius:var(--radius-lg); box-shadow:0 20px 40px rgba(0,0,0,0.4);">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- بانر ترويجي (Parallax Banner) -->
+        <section class="parallax-banner"
+            style="background: linear-gradient(rgba(11, 25, 44, 0.7), rgba(11, 25, 44, 0.7)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80') center/cover fixed; padding: 8rem 0; text-align:center; color:#fff;">
+            <div class="container" data-gsap="fade-up">
+                <h2 style="font-size:3.5rem; margin-bottom:1rem; color:#fff;">Push Your Limits.</h2>
+                <p style="font-size:1.25rem; max-width:600px; margin:0 auto 2rem auto; color:rgba(255,255,255,0.8);">
+                    Join 500,000+ athletes who trust ActivePaws for their daily grind.</p>
+                <a href="about.html" class="btn btn-sport" style="font-size:1.1rem; padding: 1rem 2rem;">Discover Our
+                    Story</a>
+            </div>
+        </section>
+        <!--  -->
+
+        <!-- تصنيفات المنتجات (Shop by Collection) -->
+        <section class="circular-collections section-pad bg-light">
+            <div class="container">
+                <div class="section-header" data-gsap="fade-up" style="margin-bottom: 2rem;">
+                    <h2>Shop by Category</h2>
+                </div>
+                <div class="circles-grid" data-gsap="fade-up" data-delay="0.1">
+                    <a href="products.html" class="circle-item">
+                        <div class="circle-img"><img
+                                src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=300&q=80"
+                                alt="Gym"></div>
+                        <span>Gym Gear</span>
+                    </a>
+                    <a href="products.html" class="circle-item">
+                        <div class="circle-img"><img
+                                src="https://images.unsplash.com/photo-1522898467493-49726bf28798?auto=format&fit=crop&w=300&q=80"
+                                alt="Yoga"></div>
+                        <span>Yoga</span>
+                    </a>
+                    <a href="products.html" class="circle-item">
+                        <div class="circle-img"><img
+                                src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=300&q=80"
+                                alt="Dogs"></div>
+                        <span>Dogs</span>
+                    </a>
+                    <a href="products.html" class="circle-item">
+                        <div class="circle-img"><img
+                                src="https://images.unsplash.com/photo-1513245543132-31f507417b26?auto=format&fit=crop&w=300&q=80"
+                                alt="Cats"></div>
+                        <span>Cats</span>
+                    </a>
+                    <a href="products.html" class="circle-item">
+                        <div class="circle-img"><img
+                                src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=300&q=80"
+                                alt="Accessories"></div>
+                        <span>Accessories</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- المنتجات الرياضية الأكثر رواجاً (Trending Sportswear) -->
+        <section class="section-pad bg-light">
+            <div class="container">
+                <div class="section-header" style="display:flex; justify-content:space-between; align-items:flex-end;"
+                    data-gsap="fade-up">
+                    <div style="text-align:left;">
+                        <h2 style="margin-bottom:0;">Trending Sportswear</h2>
+                        <p style="margin-top:0.5rem; color:var(--clr-text-light);">Our best performance gear this week.
+                        </p>
+                    </div>
+                    <a href="products.html?category=sports" class="btn btn-outline" style="border-radius:0;">View
+                        All</a>
+                </div>
+                <div class="products-grid" id="sportswear-grid">
+                    <!-- Hardcoded Sportswear Products -->
+                    <div class="product-card" data-category="sports">
+                        <div class="product-img"><a href="product-details.html?id=s1" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=500&q=80" alt="Pro-Elite Compression Tee" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('s1')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('s1')"><i class="fa-regular fa-heart"></i></button></div></div>
+                        <div class="product-info"><div class="product-category">Sportswear</div><a href="product-details.html?id=s1" class="product-title">Pro-Elite Compression Tee</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$45.00</div></div>
+                    </div>
+                    <div class="product-card" data-category="sports">
+                        <div class="product-img"><a href="product-details.html?id=s2" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1618331835717-801e976710b2?auto=format&fit=crop&w=500&q=80" alt="Aero-Flex Shorts" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('s2')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('s2')"><i class="fa-regular fa-heart"></i></button></div></div>
+                        <div class="product-info"><div class="product-category">Sportswear</div><a href="product-details.html?id=s2" class="product-title">Aero-Flex Shorts</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$35.00</div></div>
+                    </div>
+                    <div class="product-card" data-category="sports">
+                        <div class="product-img"><a href="product-details.html?id=s3" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80" alt="Zero-Gravity Shoes" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('s3')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('s3')"><i class="fa-regular fa-heart"></i></button></div></div>
+                        <div class="product-info"><div class="product-category">Sportswear</div><a href="product-details.html?id=s3" class="product-title">Zero-Gravity Shoes</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$120.00</div></div>
+                    </div>
+                    <div class="product-card" data-category="sports">
+                        <div class="product-img"><a href="product-details.html?id=s4" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=500&q=80" alt="Core-Fit Gym Bag" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('s4')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('s4')"><i class="fa-regular fa-heart"></i></button></div></div>
+                        <div class="product-info"><div class="product-category">Sportswear</div><a href="product-details.html?id=s4" class="product-title">Core-Fit Gym Bag</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$55.00</div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- استكشاف المجموعات (Featured Categories) -->
+        <section class="featured-categories section-pad">
+            <div class="container">
+                <div class="section-header" data-gsap="fade-up">
+                    <h2>Explore The Collections</h2>
+                    <p>Hand-picked essentials for you and your companion.</p>
+                </div>
+                <div class="category-grid">
+                    <!-- Category 1 -->
+                    <a href="products.html?category=sports" class="category-card sport-theme" data-gsap="fade-up">
+                        <div class="bg-image"
+                            style="background-image: url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80');">
+                        </div>
+                        <div class="content">
+                            <h3>High-Performance Sports</h3>
+                            <span class="btn-link">Shop Collection <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                    <!-- Category 2 -->
+                    <a href="products.html?category=pets" class="category-card pet-theme" data-gsap="fade-up"
+                        data-delay="0.2">
+                        <div class="bg-image"
+                            style="background-image: url('https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=800&q=80');">
+                        </div>
+                        <div class="content">
+                            <h3>Unique Pet Care</h3>
+                            <span class="btn-link">Shop Collection <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- قسم قصة البراند (Image with Text - Shopify Standard) -->
+        <section class="image-with-text section-pad">
+            <div class="container">
+                <div class="split-grid">
+                    <div class="split-image" data-gsap="fade-right">
+                        <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=800&q=80" alt="Active Lifestyle" loading="lazy">
+                    </div>
+                    <div class="split-content" data-gsap="fade-left">
+                        <h2 class="section-title">Designed for Performance & Comfort</h2>
+                        <p>Every piece in our collection is crafted with premium, breathable fabrics built to withstand your toughest workouts while keeping you looking effortlessly stylish. Whether you're hitting the gym or the trails with your furry best friend, we've got you covered.</p>
+                        <ul class="feature-list mt-4" style="list-style: none; padding: 0; display:flex; flex-direction:column; gap:1rem;">
+                            <li><i class="fa-solid fa-check" style="color:var(--clr-success); margin-right:8px; font-size:1.2rem;"></i> Advanced Moisture-Wicking Technology</li>
+                            <li><i class="fa-solid fa-check" style="color:var(--clr-success); margin-right:8px; font-size:1.2rem;"></i> Squat-Proof & Ultra-Durable Materials</li>
+                            <li><i class="fa-solid fa-check" style="color:var(--clr-success); margin-right:8px; font-size:1.2rem;"></i> 100% Earth-Friendly Sustainable Packaging</li>
+                        </ul>
+                        <div class="mt-4">
+                            <a href="about.html" class="btn btn-outline" style="border-radius: var(--radius-full);">Discover Our Story <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- منتجات الحيوانات الأليفة المختارة (Top Picks for Pets) -->
+        <section class="section-pad">
+            <div class="container">
+                <div class="section-header" style="display:flex; justify-content:space-between; align-items:flex-end;"
+                    data-gsap="fade-up">
+                    <div style="text-align:left;">
+                        <h2 style="margin-bottom:0;">Top Picks For Pets</h2>
+                        <p style="margin-top:0.5rem; color:var(--clr-text-light);">Premium gear for your loyal
+                            companions.</p>
+                    </div>
+                    <a href="products.html?category=pets" class="btn btn-outline" style="border-radius:0;">View All</a>
+                </div>
+                <div class="products-grid" id="pets-grid">
+                    <!-- Hardcoded Pet Products -->
+                    <div class="product-card" data-category="pets">
+                        <div class="product-img"><a href="product-details.html?id=p1" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=500&q=80" alt="Dog Bed" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('p1')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('p1')"><i class="fa-regular fa-heart"></i></button></div></div>
+                        <div class="product-info"><div class="product-category">Pet Essentials</div><a href="product-details.html?id=p1" class="product-title">Orthopedic Dog Bed</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$89.99</div></div>
+                    </div>
+                    <div class="product-card" data-category="pets">
+                        <div class="product-img"><a href="product-details.html?id=p2" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=500&q=80" alt="Fetch Toy" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('p2')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('p2')"><i class="fa-regular fa-heart"></i></button></div></div>
+                        <div class="product-info"><div class="product-category">Pet Essentials</div><a href="product-details.html?id=p2" class="product-title">Interactive Fetch Toy</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$24.50</div></div>
+                    </div>
+                    <div class="product-card" data-category="pets">
+                        <div class="product-img"><a href="product-details.html?id=p3" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=500&q=80" alt="Dog Bed" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('p3')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('p3')"><i class="fa-regular fa-heart"></i></button></div></div>
+                        <div class="product-info"><div class="product-category">Pet Essentials</div><a href="product-details.html?id=p3" class="product-title">Reflective Trail Harness</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$45.00</div></div>
+                    </div>
+                    <div class="product-card" data-category="pets">
+                        <div class="product-img"><a href="product-details.html?id=p4" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=500&q=80" alt="Travel Bowl" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('p4')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('p4')"><i class="fa-regular fa-heart"></i></button></div></div>
+                        <div class="product-info"><div class="product-category">Pet Essentials</div><a href="product-details.html?id=p4" class="product-title">Stainless Steel Travel Bowl</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$18.00</div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- المنتجات الأكثر مبيعاً (Best Sellers Panel) -->
+        <section class="best-sellers section-pad bg-light">
+            <div class="container">
+                <div class="section-header" data-gsap="fade-up">
+                    <h2>Trending Right Now</h2>
+                    <div class="category-tabs">
+                        <button class="tab-btn active" data-target="all">All</button>
+                        <button class="tab-btn" data-target="sports">Sports</button>
+                        <button class="tab-btn" data-target="pets">Pets</button>
+                    </div>
+                </div>
+
+                <div class="products-grid" id="featured-products">
+                    <!-- Hardcoded All Products -->
+                    <div class="product-card" data-category="sports">
+                        <div class="product-img"><a href="product-details.html?id=s1" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=500&q=80" alt="Pro-Elite Compression Tee" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('s1')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('s1')"><i class="fa-regular fa-heart"></i></button></div></div>
+                        <div class="product-info"><div class="product-category">Sportswear</div><a href="product-details.html?id=s1" class="product-title">Pro-Elite Compression Tee</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$45.00</div></div>
+                    </div>
+                    <div class="product-card" data-category="sports">
+                        <div class="product-img"><a href="product-details.html?id=s2" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1618331835717-801e976710b2?auto=format&fit=crop&w=500&q=80" alt="Aero-Flex Shorts" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('s2')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('s2')"><i class="fa-regular fa-heart"></i></button></div></div>
+                        <div class="product-info"><div class="product-category">Sportswear</div><a href="product-details.html?id=s2" class="product-title">Aero-Flex Shorts</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$35.00</div></div>
+                    </div>
+                    <div class="product-card" data-category="sports">
+                        <div class="product-img"><a href="product-details.html?id=s3" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80" alt="Zero-Gravity Shoes" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('s3')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('s3')"><i class="fa-regular fa-heart"></i></button></div></div>
+                        <div class="product-info"><div class="product-category">Sportswear</div><a href="product-details.html?id=s3" class="product-title">Zero-Gravity Shoes</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$120.00</div></div>
+                    </div>
+                    <div class="product-card" data-category="sports">
+                        <div class="product-img"><a href="product-details.html?id=s4" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=500&q=80" alt="Core-Fit Gym Bag" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('s4')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('s4')"><i class="fa-regular fa-heart"></i></button></div></div>
+                        <div class="product-info"><div class="product-category">Sportswear</div><a href="product-details.html?id=s4" class="product-title">Core-Fit Gym Bag</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$55.00</div></div>
+                    </div>
+                    <!-- Pet Products -->
+                    <div class="product-card" data-category="pets">
+                        <div class="product-img"><a href="product-details.html?id=p1" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=500&q=80" alt="Dog Bed" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('p1')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('p1')"><i class="fa-regular fa-heart"></i></button></div></div>
+                        <div class="product-info"><div class="product-category">Pet Essentials</div><a href="product-details.html?id=p1" class="product-title">Orthopedic Dog Bed</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$89.99</div></div>
+                    </div>
+                    <div class="product-card" data-category="pets">
+                        <div class="product-img"><a href="product-details.html?id=p2" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=500&q=80" alt="Fetch Toy" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('p2')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('p2')"><i class="fa-regular fa-heart"></i></button></div></div>
+                        <div class="product-info"><div class="product-category">Pet Essentials</div><a href="product-details.html?id=p2" class="product-title">Interactive Fetch Toy</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$24.50</div></div>
+                    </div>
+                    <div class="product-card" data-category="pets">
+                        <div class="product-img"><a href="product-details.html?id=p3" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=500&q=80" alt="Dog Bed" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('p3')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('p3')"><i class="fa-regular fa-heart"></i></button></div></div>
+                        <div class="product-info"><div class="product-category">Pet Essentials</div><a href="product-details.html?id=p3" class="product-title">Reflective Trail Harness</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$45.00</div></div>
+                    </div>
+                    <div class="product-card" data-category="pets">
+                        <div class="product-img"><a href="product-details.html?id=p4" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=500&q=80" alt="Travel Bowl" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('p4')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('p4')"><i class="fa-regular fa-heart"></i></button></div></div>
+                        <div class="product-info"><div class="product-category">Pet Essentials</div><a href="product-details.html?id=p4" class="product-title">Stainless Steel Travel Bowl</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$18.00</div></div>
+                    </div>
+                </div>
+
+                <div class="center-btn mt-4" data-gsap="fade-up">
+                    <a href="products.html" class="btn btn-outline">View All Products</a>
+                </div>
+            </div>
+        </section>
+
+
+    
+        <!-- قسم انستجرام والمجتمع (Instagram Feed) -->
+        <section class="social-shop section-pad bg-light">
+            <div class="container">
+                <div class="section-header text-center" data-gsap="fade-up">
+                    <h2>Shop Our Community</h2>
+                    <p>Tag @ActivePaws and use #ActiveUSA to be featured on our official page.</p>
+                </div>
+                <div class="insta-grid" data-gsap="fade-up">
+                    <div class="insta-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" alt="Instagram Post 1" loading="lazy">
+                        <i class="fa-brands fa-instagram insta-icon"></i>
+                    </div>
+                    <div class="insta-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=600&q=80" alt="Instagram Post 2" loading="lazy">
+                        <i class="fa-brands fa-instagram insta-icon"></i>
+                    </div>
+                    <div class="insta-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=600&q=80" alt="Instagram Post 3" loading="lazy">
+                        <i class="fa-brands fa-instagram insta-icon"></i>
+                    </div>
+                    <div class="insta-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=500&q=80" alt="Instagram Post 4" loading="lazy">
+                        <i class="fa-brands fa-instagram insta-icon"></i>
+                    </div>
+                </div>
+                <div class="center-btn mt-4" data-gsap="fade-up">
+                    <a href="https://instagram.com" target="_blank" class="btn btn-outline" style="border-radius: var(--radius-full);"><i class="fa-brands fa-instagram"></i> Follow @ActivePaws</a>
+                </div>
+            </div>
+        </section>
+                <!-- آراء العملاء (Social Proof / Testimonials) -->
+        <section class="testimonials section-pad">
+            <div class="container">
+                <div class="section-header" data-gsap="fade-up">
+                    <h2>What America is Saying</h2>
+                    <p>Real reviews from real athletes and pet lovers.</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card" data-gsap="fade-up">
+                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i></div>
+                        <p class="review-text">"The compression gear holds up during my toughest CrossFit sessions, and
+                            the fast shipping is unmatched. Highly recommend!"</p>
+                        <div class="reviewer">
+                            <div class="avatar">JR</div>
+                            <div>
+                                <strong>James R.</strong>
+                                <span style="font-size:0.8rem; color:var(--clr-text-light);">Verified Buyer, TX</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card" data-gsap="fade-up" data-delay="0.1">
+                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i></div>
+                        <p class="review-text">"Bought the orthopedic bed for my senior Golden Retriever. Best purchase
+                            ever. She loves it and it matches my living room perfectly."</p>
+                        <div class="reviewer">
+                            <div class="avatar" style="background:var(--clr-accent-pet);">SA</div>
+                            <div>
+                                <strong>Sarah A.</strong>
+                                <span style="font-size:0.8rem; color:var(--clr-text-light);">Verified Buyer, CA</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card" data-gsap="fade-up" data-delay="0.2">
+                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i></div>
+                        <p class="review-text">"I always struggle finding quality activewear that isn't overpriced.
+                            ActivePaws hits the sweet spot of premium feel without the markup."</p>
+                        <div class="reviewer">
+                            <div class="avatar" style="background:var(--clr-dark);">MP</div>
+                            <div>
+                                <strong>Michael P.</strong>
+                                <span style="font-size:0.8rem; color:var(--clr-text-light);">Verified Buyer, NY</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- قسم الأسئلة الشائعة (FAQ Accordion - Shopify Standard) -->
+        <section class="faq-section section-pad bg-light">
+            <div class="container">
+                <div class="section-header text-center" data-gsap="fade-up">
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Everything you need to know about our products, sizing, and shipping.</p>
+                </div>
+                <div class="faq-container" data-gsap="fade-up" style="max-width: 800px; margin: 0 auto;">
+                    <div class="faq-item">
+                        <button class="faq-question">What is your return policy? <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="faq-answer"><p>We offer a hassle-free 30-day return policy. If you aren't completely satisfied with your purchase, simply return the items in their original, unwashed condition for a full refund or store credit.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Do you ship internationally? <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="faq-answer"><p>Currently, we offer fast and reliable shipping exclusively within the United States. We are actively working on expanding our shipping zones globally in the near future! Join our newsletter for updates.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">How does the apparel sizing run? <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="faq-answer"><p>Our sportswear fits true to size and is designed with an athletic, compressing fit. If you are between sizes or prefer a more relaxed fit, we highly recommend sizing up. Please check our detailed size guides on corresponding product pages.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Are your pet products durable for large dogs? <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="faq-answer"><p>Yes! Our entire pet accessory line, including harnesses and toys, is heavily tested for durability and strength. We specifically utilize military-grade nylon and reinforced stitching to ensure safety for large and active breeds.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- مؤشرات الثقة (US Trust Signals) -->
+        <section class="trust-signals">
+            <div class="container trust-container">
+                <div class="trust-item" data-gsap="fade-up" data-delay="0.1">
+                    <div class="trust-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                    <div class="trust-text">
+                        <h4>Lightning Fast Shipping</h4>
+                        <p>2-day delivery across the US</p>
+                    </div>
+                </div>
+                <div class="trust-item" data-gsap="fade-up" data-delay="0.2">
+                    <div class="trust-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="trust-text">
+                        <h4>Secure Checkout</h4>
+                        <p>256-bit encrypted payments</p>
+                    </div>
+                </div>
+                <div class="trust-item" data-gsap="fade-up" data-delay="0.3">
+                    <div class="trust-icon"><i class="fa-solid fa-rotate-left"></i></div>
+                    <div class="trust-text">
+                        <h4>30-Day Returns</h4>
+                        <p>Hassle-free return policy</p>
+                    </div>
+                </div>
+                <div class="trust-item" data-gsap="fade-up" data-delay="0.4">
+                    <div class="trust-icon"><i class="fa-solid fa-headset"></i></div>
+                    <div class="trust-text">
+                        <h4>24/7 US Support</h4>
+                        <p>We're here when you need us</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- النشرة البريدية (Newsletter / CTA) -->
+        <section class="newsletter-cta">
+            <div class="container cta-container">
+                <div class="cta-content" data-gsap="fade-up">
+                    <h2>Join the ActivePaws Community</h2>
+                    <p>Unlock 15% off your first order, plus get exclusive access to US drops and pet care tips.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button class="btn btn-primary" type="submit">Subscribe</button>
+                    </form>
+                    <span class="privacy-note"><i class="fa-solid fa-lock"></i> We respect your privacy. No spam.</span>
+                </div>
+            </div>
+            <div class="cta-bg-overlay"></div>
+        </section>
+
+    </main>
+
+    <!-- الفوتر (تذييل الصفحة): يحتوي على الروابط الهامة ومعلومات التواصل وتوثيق الدفع -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">Active<span>Paws</span></a>
+                    <p>Elevating the American lifestyle by bridging high-end performance wear with premium pet
+                        essentials.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="#">Men's Activewear</a></li>
+                        <li><a href="#">Women's Activewear</a></li>
+                        <li><a href="#">Dog Accessories</a></li>
+                        <li><a href="#">Cat Essentials</a></li>
+                        <li><a href="#">New Arrivals</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Track Order</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ActivePaws & Co. All rights reserved.</p>
+                <div class="payment-methods">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-brands fa-cc-amex"></i>
+                    <i class="fa-brands fa-cc-paypal"></i>
+                    <i class="fa-brands fa-google-pay"></i>
+                    <i class="fa-brands fa-apple-pay"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Sidebar Overlay -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart" id="close-cart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Items injected via JS -->
+            <div class="empty-cart-msg">Your cart is currently empty.</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Subtotal</span>
+                <span id="cart-subtotal-val">$0.00</span>
+            </div>
+            <p class="shipping-note">Taxes and shipping calculated at checkout.</p>
+            <button class="btn btn-primary checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- GSAP / Lottie -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- App Scripts -->
+    <script src="js/cart.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

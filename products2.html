@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Collections | ActivePaws</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="css/components2.css">
+    <style>
+        /* Collection Specific Styles */
+        .page-header {
+            background-image: linear-gradient(rgba(11, 25, 44, 0.8), rgba(11, 25, 44, 0.8)), url('https://images.unsplash.com/photo-1544365558-35aa4afcf11f?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        .page-title {
+            font-size: 3.5rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .breadcrumbs {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 1.5rem;
+        }
+        .breadcrumbs a { color: #fff; }
+        
+        .shop-layout {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 3rem;
+            padding-top: 3rem;
+        }
+        
+        /* Advanced Sidebar */
+        .filter-sidebar {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--clr-border);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        .filter-group {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--clr-border);
+            padding-bottom: 1.5rem;
+        }
+        .filter-group:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .filter-group h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        .filter-label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            color: var(--clr-text-light);
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        .filter-label:hover { color: var(--clr-dark); }
+        .filter-label input { width: 16px; height: 16px; accent-color: var(--clr-dark); }
+        .filter-count { margin-left: auto; font-size: 0.8rem; color: #94a3b8; }
+        
+        /* Color Swatches */
+        .color-swatches { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .swatch { width: 30px; height: 30px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px var(--clr-border); cursor: pointer; }
+        .swatch.active { box-shadow: 0 0 0 2px var(--clr-dark); }
+        
+        /* Active Filters & Sort */
+        .active-filters-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            background: var(--clr-bg-alt);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-md);
+        }
+        .pills { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+        .pill { background: #fff; border: 1px solid var(--clr-border); padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem; }
+        .pill i { cursor: pointer; color: var(--clr-text-light); }
+        .pill i:hover { color: var(--clr-accent-sport); }
+        .sort-control { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
+        .sort-by { padding: 0.5rem; border-radius: var(--radius-sm); border: 1px solid var(--clr-border); outline: none; }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 4rem;
+        }
+        .page-btn {
+            width: 40px; height: 40px; border-radius: var(--radius-sm); border: 1px solid var(--clr-border);
+            display: flex; align-items: center; justify-content: center; font-weight: 600; transition: all 0.3s;
+        }
+        .page-btn.active, .page-btn:hover { background: var(--clr-dark); color: #fff; border-color: var(--clr-dark); }
+        
+        /* Recently Viewed */
+        .recently-viewed { margin-top: 5rem; border-top: 1px solid var(--clr-border); padding-top: 4rem; }
+
+        @media (max-width: 992px) {
+            .shop-layout { grid-template-columns: 1fr; }
+            .filter-sidebar { display: none; } /* Best practice: Toggle overlay on mobile */
+            .mobile-filter-btn { display: inline-flex !important; }
+        }
+    </style>
+</head>
+<body>
+    <!-- شاشة التحميل (Preloader) -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <h1 class="logo">Active<span>Paws</span></h1>
+            <div class="loader-line"></div>
+        </div>
+    </div>
+    <!-- Top Announcement Bar -->
+    <div class="announcement-bar">
+        <p>⚡ FREE 2-Day Shipping on all US orders over $50! <a href="#">Shop Now</a></p>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header" id="header">
+        <div class="container header-container">
+            <button class="mobile-toggle" aria-label="Toggle Menu"><i class="fa-solid fa-bars"></i></button>
+            <a href="index2.html" class="logo">Active<span>Paws</span></a>
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="index2.html">Home</a></li>
+                    <li><a href="products2.html?category=sports" class="active">Explore Sports</a></li>
+                    <li><a href="products2.html?category=pets">Pet Essentials</a></li>
+                    <li><a href="about2.html">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="action-btn search-btn"><i class="fa-solid fa-search"></i></button>
+                <button class="action-btn cart-btn" id="open-cart"><i class="fa-solid fa-cart-shopping"></i><span class="badge" id="cart-badge">0</span></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Header -->
+        <div class="page-header">
+            <div class="container" data-gsap="fade-up">
+                <div class="breadcrumbs">
+                    <a href="index2.html">Home</a> / <span style="font-weight:600;">All Collections</span>
+                </div>
+                <h1 class="page-title" id="page-title">All Collections</h1>
+                <p style="font-size: 1.2rem;">Discover premium gear tailored for peak performance and absolute comfort.</p>
+            </div>
+        </div>
+
+        <section class="section-pad">
+            <div class="container shop-layout">
+                <!-- Sidebar Filters -->
+                <aside class="filter-sidebar" data-gsap="fade-right">
+                    <div class="filter-group">
+                        <h4>Categories <i class="fa-solid fa-chevron-up"></i></h4>
+                        <div class="filter-list">
+                            <label class="filter-label"><input type="checkbox" checked> All <span class="filter-count">(124)</span></label>
+                            <label class="filter-label"><input type="checkbox"> Men's Activewear <span class="filter-count">(45)</span></label>
+                            <label class="filter-label"><input type="checkbox"> Women's Activewear <span class="filter-count">(52)</span></label>
+                            <label class="filter-label"><input type="checkbox"> Dog Supplies <span class="filter-count">(18)</span></label>
+                            <label class="filter-label"><input type="checkbox"> Cat Essentials <span class="filter-count">(9)</span></label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Price Range <i class="fa-solid fa-chevron-up"></i></h4>
+                        <div class="filter-list">
+                            <label class="filter-label"><input type="checkbox"> Under $25 <span class="filter-count">(22)</span></label>
+                            <label class="filter-label"><input type="checkbox"> $25 - $50 <span class="filter-count">(48)</span></label>
+                            <label class="filter-label"><input type="checkbox"> $50 - $100 <span class="filter-count">(35)</span></label>
+                            <label class="filter-label"><input type="checkbox"> Over $100 <span class="filter-count">(19)</span></label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Size <i class="fa-solid fa-chevron-up"></i></h4>
+                        <div class="filter-list">
+                            <label class="filter-label"><input type="checkbox"> S - Small</label>
+                            <label class="filter-label"><input type="checkbox"> M - Medium</label>
+                            <label class="filter-label"><input type="checkbox"> L - Large</label>
+                            <label class="filter-label"><input type="checkbox"> XL - Extra Large</label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Colors <i class="fa-solid fa-chevron-up"></i></h4>
+                        <div class="color-swatches">
+                            <div class="swatch active" style="background:#0B192C;"></div>
+                            <div class="swatch" style="background:#E11D48;"></div>
+                            <div class="swatch" style="background:#F59E0B;"></div>
+                            <div class="swatch" style="background:#10B981;"></div>
+                            <div class="swatch" style="background:#F1F5F9;"></div>
+                            <div class="swatch" style="background:#000000;"></div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Product Grid Area -->
+                <div class="shop-main">
+                    <div class="active-filters-bar" data-gsap="fade-up">
+                        <div class="pills">
+                            <button class="btn btn-outline mobile-filter-btn" style="display:none; padding:0.5rem; font-size:0.8rem;"><i class="fa-solid fa-filter"></i> Filter</button>
+                            <span>Active Filters:</span>
+                            <div class="pill">Color: Navy <i class="fa-solid fa-xmark"></i></div>
+                            <a href="#" style="font-size:0.85rem; color:var(--clr-text-light); text-decoration:underline;">Clear All</a>
+                        </div>
+                        <div class="sort-control">
+                            <label>Sort By:</label>
+                            <select class="sort-by">
+                                <option>Featured</option>
+                                <option>Best Selling</option>
+                                <option>Price: Low to High</option>
+                                <option>Price: High to Low</option>
+                                <option>Newest Arrivals</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="products-grid" id="featured-products">
+                        <!-- Hardcoded All Products -->
+                        <div class="product-card" data-category="sports">
+                            <div class="product-img"><a href="product-details2.html?id=s1" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=500&q=80" alt="Pro-Elite Compression Tee" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('s1')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('s1')"><i class="fa-regular fa-heart"></i></button></div></div>
+                            <div class="product-info"><div class="product-category">Sportswear</div><a href="product-details2.html?id=s1" class="product-title">Pro-Elite Compression Tee</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$45.00</div></div>
+                        </div>
+                        <div class="product-card" data-category="sports">
+                            <div class="product-img"><a href="product-details2.html?id=s2" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1618331835717-801e976710b2?auto=format&fit=crop&w=500&q=80" alt="Aero-Flex Shorts" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('s2')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('s2')"><i class="fa-regular fa-heart"></i></button></div></div>
+                            <div class="product-info"><div class="product-category">Sportswear</div><a href="product-details2.html?id=s2" class="product-title">Aero-Flex Shorts</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$35.00</div></div>
+                        </div>
+                        <div class="product-card" data-category="sports">
+                            <div class="product-img"><a href="product-details2.html?id=s3" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80" alt="Zero-Gravity Shoes" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('s3')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('s3')"><i class="fa-regular fa-heart"></i></button></div></div>
+                            <div class="product-info"><div class="product-category">Sportswear</div><a href="product-details2.html?id=s3" class="product-title">Zero-Gravity Shoes</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$120.00</div></div>
+                        </div>
+                        <div class="product-card" data-category="sports">
+                            <div class="product-img"><a href="product-details2.html?id=s4" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=500&q=80" alt="Core-Fit Gym Bag" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('s4')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('s4')"><i class="fa-regular fa-heart"></i></button></div></div>
+                            <div class="product-info"><div class="product-category">Sportswear</div><a href="product-details2.html?id=s4" class="product-title">Core-Fit Gym Bag</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$55.00</div></div>
+                        </div>
+                        <!-- Pet Products -->
+                        <div class="product-card" data-category="pets">
+                            <div class="product-img"><a href="product-details2.html?id=p1" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=500&q=80" alt="Dog Bed" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('p1')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('p1')"><i class="fa-regular fa-heart"></i></button></div></div>
+                            <div class="product-info"><div class="product-category">Pet Essentials</div><a href="product-details2.html?id=p1" class="product-title">Orthopedic Dog Bed</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$89.99</div></div>
+                        </div>
+                        <div class="product-card" data-category="pets">
+                            <div class="product-img"><a href="product-details2.html?id=p2" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=500&q=80" alt="Fetch Toy" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('p2')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('p2')"><i class="fa-regular fa-heart"></i></button></div></div>
+                            <div class="product-info"><div class="product-category">Pet Essentials</div><a href="product-details2.html?id=p2" class="product-title">Interactive Fetch Toy</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$24.50</div></div>
+                        </div>
+                        <div class="product-card" data-category="pets">
+                            <div class="product-img"><a href="product-details2.html?id=p3" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1601646670868-6d80a3794696?auto=format&fit=crop&w=500&q=80" alt="Trail Harness" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('p3')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('p3')"><i class="fa-regular fa-heart"></i></button></div></div>
+                            <div class="product-info"><div class="product-category">Pet Essentials</div><a href="product-details2.html?id=p3" class="product-title">Reflective Trail Harness</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$45.00</div></div>
+                        </div>
+                        <div class="product-card" data-category="pets">
+                            <div class="product-img"><a href="product-details2.html?id=p4" style="display:block; width:100%; height:100%;"><img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=500&q=80" alt="Travel Bowl" loading="lazy"></a><div class="product-actions"><button class="btn-add-cart" onclick="addToCart('p4')"><i class="fa-solid fa-cart-plus"></i> Add</button><button class="btn-icon" aria-label="Add to wishlist" onclick="addToWishlist('p4')"><i class="fa-regular fa-heart"></i></button></div></div>
+                            <div class="product-info"><div class="product-category">Pet Essentials</div><a href="product-details2.html?id=p4" class="product-title">Stainless Steel Travel Bowl</a><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="product-price">$18.00</div></div>
+                        </div>
+                    </div>
+
+                    <!-- Enhanced Pagination -->
+                    <div class="pagination" data-gsap="fade-up">
+                        <button class="page-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <span style="align-self:center;">...</span>
+                        <button class="page-btn">8</button>
+                        <button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recently Viewed Section -->
+            <div class="container recently-viewed">
+                <div class="section-header">
+                    <h2>Recently Viewed</h2>
+                </div>
+                <!-- Mini product grid -->
+                <div class="products-grid" style="grid-template-columns: repeat(4, 1fr);">
+                     <div class="product-card">
+                        <div class="product-img">
+                            <a href="product-details2.html?id=p2"><img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=300&q=80" alt="Toy"></a>
+                        </div>
+                        <div class="product-info">
+                            <a href="product-details2.html?id=p2" class="product-title">Interactive Fetch Toy</a>
+                            <div class="product-price">$24.50</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- مؤشرات الثقة (US Trust Signals) -->
+        <section class="trust-signals" style="background:#fff; border-top:1px solid var(--clr-border);">
+            <div class="container trust-container">
+                <div class="trust-item" data-gsap="fade-up" data-delay="0.1">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <h4>Free US Delivery</h4>
+                    <p>On all orders over $50</p>
+                </div>
+                <div class="trust-item" data-gsap="fade-up" data-delay="0.2">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    <h4>30-Day Returns</h4>
+                    <p>Hassle-free return policy</p>
+                </div>
+                <div class="trust-item" data-gsap="fade-up" data-delay="0.3">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h4>Secure Checkout</h4>
+                    <p>100% protected payments</p>
+                </div>
+                <div class="trust-item" data-gsap="fade-up" data-delay="0.4">
+                    <i class="fa-solid fa-headset"></i>
+                    <h4>24/7 Support</h4>
+                    <p>Dedicated American team</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- الفوتر (تذييل الصفحة) -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index2.html" class="logo">Active<span>Paws</span></a>
+                    <p>Elevating the American lifestyle by bridging high-end performance wear with premium pet essentials.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="#">Men's Activewear</a></li>
+                        <li><a href="#">Women's Activewear</a></li>
+                        <li><a href="#">Dog Accessories</a></li>
+                        <li><a href="#">Cat Essentials</a></li>
+                        <li><a href="#">New Arrivals</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about2.html">About Us</a></li>
+                        <li><a href="blog2.html">Our Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="contact2.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Track Order</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ActivePaws & Co. All rights reserved. Designed for USA.</p>
+                <div class="payment-methods">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-brands fa-cc-amex"></i>
+                    <i class="fa-brands fa-cc-paypal"></i>
+                    <i class="fa-brands fa-google-pay"></i>
+                    <i class="fa-brands fa-apple-pay"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/cart2.js"></script>
+    <script src="js/animations2.js"></script>
+    <script src="js/main2.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+            if (category === 'sports') {
+                document.getElementById('page-title').textContent = "Mens & Womens Sportswear";
+                setTimeout(() => window.renderProducts && window.renderProducts('sports'), 100);
+            } else if (category === 'pets') {
+                document.getElementById('page-title').textContent = "Premium Pet Care";
+                setTimeout(() => window.renderProducts && window.renderProducts('pets'), 100);
+            }
+        });
+    </script>
+</body>
+</html>
